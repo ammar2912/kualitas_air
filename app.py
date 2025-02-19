@@ -1,8 +1,9 @@
 from flask import Flask, request
 from fuzzy_without_do import hitung_sugeno
-import mysql.connector
-from config import connect_db
-from datetime import datetime
+# import mysql.connector
+# from config import connect_db
+# from datetime import datetime
+from flask import jsonify
 
 app = Flask(__name__)
 
@@ -18,7 +19,7 @@ def kualitas_air():
     # Menghitung kualitas air
     kualitas = hitung_sugeno(suhu, tds, ph)
     
-    return kualitas
+    return jsonify({"label": kualitas})
     
     # timestamp = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
     
