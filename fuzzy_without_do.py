@@ -12,9 +12,9 @@ def hitung_sugeno(suhu_input, tds_input, ph_input):
     ph_var = ctrl.Antecedent(np.arange(0, 30, 0.1), 'ph')
 
     # Membership Functions untuk Input
-    suhu_var['dingin'] = fuzz.trimf(suhu_var.universe, [0, 10, 20])
-    suhu_var['normal'] = fuzz.trimf(suhu_var.universe, [15, 25, 35])
-    suhu_var['panas'] = fuzz.trimf(suhu_var.universe, [30, 60, 100])
+    suhu_var['dingin'] = fuzz.trimf(suhu_var.universe, [0, 10, 19])
+    suhu_var['normal'] = fuzz.trimf(suhu_var.universe, [19, 25, 29])
+    suhu_var['panas'] = fuzz.trimf(suhu_var.universe, [29, 60, 100])
 
     tds_var['baik'] = fuzz.trimf(tds_var.universe, [0, 75, 151])
     tds_var['buruk'] = fuzz.trimf(tds_var.universe, [151, 400, 600])
@@ -31,21 +31,21 @@ def hitung_sugeno(suhu_input, tds_input, ph_input):
 
     # Aturan Fuzzy
     aturan_sugeno = [
-        (['dingin', 'baik', 'asam'], 'baik'),
-        (['dingin', 'baik', 'netral'], 'baik'),
-        (['dingin', 'baik', 'basa'], 'baik'),
+        (['dingin', 'baik', 'asam'], 'buruk'),
+        (['dingin', 'baik', 'netral'], 'buruk'),
+        (['dingin', 'baik', 'basa'], 'buruk'),
         (['dingin', 'buruk', 'asam'], 'buruk'),
         (['dingin', 'buruk', 'netral'], 'buruk'),
         (['dingin', 'buruk', 'basa'], 'buruk'),
-        (['normal', 'baik', 'asam'], 'baik'),
+        (['normal', 'baik', 'asam'], 'buruk'),
         (['normal', 'baik', 'netral'], 'baik'),
-        (['normal', 'baik', 'basa'], 'baik'),
+        (['normal', 'baik', 'basa'], 'buruk'),
         (['normal', 'buruk', 'asam'], 'buruk'),
         (['normal', 'buruk', 'netral'], 'buruk'),
         (['normal', 'buruk', 'basa'], 'buruk'),
-        (['panas', 'baik', 'asam'], 'baik'),
-        (['panas', 'baik', 'netral'], 'baik'),
-        (['panas', 'baik', 'basa'], 'baik'),
+        (['panas', 'baik', 'asam'], 'buruk'),
+        (['panas', 'baik', 'netral'], 'buruk'),
+        (['panas', 'baik', 'basa'], 'buruk'),
         (['panas', 'buruk', 'asam'], 'buruk'),
         (['panas', 'buruk', 'netral'], 'buruk'),
         (['panas', 'buruk', 'basa'], 'buruk'),
