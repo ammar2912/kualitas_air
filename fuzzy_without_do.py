@@ -16,9 +16,8 @@ def hitung_sugeno(suhu_input, tds_input, ph_input):
     suhu_var['normal'] = fuzz.trimf(suhu_var.universe, [15, 25, 35])
     suhu_var['panas'] = fuzz.trimf(suhu_var.universe, [30, 60, 100])
 
-    tds_var['kecil'] = fuzz.trimf(tds_var.universe, [0, 40, 80])
-    tds_var['menegah'] = fuzz.trimf(tds_var.universe, [70, 110, 150])
-    tds_var['besar'] = fuzz.trimf(tds_var.universe, [150, 400, 600])
+    tds_var['baik'] = fuzz.trimf(tds_var.universe, [0, 75, 151])
+    tds_var['buruk'] = fuzz.trimf(tds_var.universe, [151, 400, 600])
 
     ph_var['asam'] = fuzz.trimf(ph_var.universe, [0, 3, 6])
     ph_var['netral'] = fuzz.trimf(ph_var.universe, [6, 7, 8])
@@ -32,33 +31,24 @@ def hitung_sugeno(suhu_input, tds_input, ph_input):
 
     # Aturan Fuzzy
     aturan_sugeno = [
-        (['dingin', 'kecil', 'asam'], 'buruk'),
-        (['dingin', 'kecil', 'netral'], 'baik'),
-        (['dingin', 'kecil', 'basa'], 'buruk'),
-        (['dingin', 'menegah', 'asam'], 'buruk'),
-        (['dingin', 'menegah', 'netral'], 'baik'),
-        (['dingin', 'menegah', 'basa'], 'buruk'),
-        (['dingin', 'besar', 'asam'], 'buruk'),
-        (['dingin', 'besar', 'netral'], 'buruk'),
-        (['dingin', 'besar', 'basa'], 'buruk'),
-        (['normal', 'kecil', 'asam'], 'baik'),
-        (['normal', 'kecil', 'netral'], 'baik'),
-        (['normal', 'kecil', 'basa'], 'baik'),
-        (['normal', 'menegah', 'asam'], 'baik'),
-        (['normal', 'menegah', 'netral'], 'baik'),
-        (['normal', 'menegah', 'basa'], 'baik'),
-        (['normal', 'besar', 'asam'], 'buruk'),
-        (['normal', 'besar', 'netral'], 'baik'),
-        (['normal', 'besar', 'basa'], 'buruk'),
-        (['panas', 'kecil', 'asam'], 'buruk'),
-        (['panas', 'kecil', 'netral'], 'baik'),
-        (['panas', 'kecil', 'basa'], 'buruk'),
-        (['panas', 'menegah', 'asam'], 'buruk'),
-        (['panas', 'menegah', 'netral'], 'baik'),
-        (['panas', 'menegah', 'basa'], 'buruk'),
-        (['panas', 'besar', 'asam'], 'buruk'),
-        (['panas', 'besar', 'netral'], 'buruk'),
-        (['panas', 'besar', 'basa'], 'buruk')
+        (['dingin', 'baik', 'asam'], 'baik'),
+        (['dingin', 'baik', 'netral'], 'baik'),
+        (['dingin', 'baik', 'basa'], 'baik'),
+        (['dingin', 'buruk', 'asam'], 'buruk'),
+        (['dingin', 'buruk', 'netral'], 'buruk'),
+        (['dingin', 'buruk', 'basa'], 'buruk'),
+        (['normal', 'baik', 'asam'], 'baik'),
+        (['normal', 'baik', 'netral'], 'baik'),
+        (['normal', 'baik', 'basa'], 'baik'),
+        (['normal', 'buruk', 'asam'], 'buruk'),
+        (['normal', 'buruk', 'netral'], 'buruk'),
+        (['normal', 'buruk', 'basa'], 'buruk'),
+        (['panas', 'baik', 'asam'], 'baik'),
+        (['panas', 'baik', 'netral'], 'baik'),
+        (['panas', 'baik', 'basa'], 'baik'),
+        (['panas', 'buruk', 'asam'], 'buruk'),
+        (['panas', 'buruk', 'netral'], 'buruk'),
+        (['panas', 'buruk', 'basa'], 'buruk'),
     ]
 
     numerator = 0
