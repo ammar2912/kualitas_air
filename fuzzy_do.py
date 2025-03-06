@@ -32,15 +32,15 @@ def hitung_sugeno(input_suhu, input_oksigen, input_ph, input_tds):
 
     kadar_oksigen_var['rendah'] = fuzz.trimf(kadar_oksigen_var.universe, [0, 2, 4])
     kadar_oksigen_var['sedang'] = fuzz.trimf(kadar_oksigen_var.universe, [3, 5, 7])
-    kadar_oksigen_var['tinggi'] = fuzz.trimf(kadar_oksigen_var.universe, [6, 8, 10])
+    kadar_oksigen_var['tinggi'] = fuzz.trimf(kadar_oksigen_var.universe, [6, 8, 40])
 
     ph_var['asam'] = fuzz.trimf(ph_var.universe, [0, 3, 7])
     ph_var['netral'] = fuzz.trimf(ph_var.universe, [6, 7, 8])
     ph_var['basa'] = fuzz.trimf(ph_var.universe, [7, 10, 14])
 
-    tds_var['kecil'] = fuzz.trimf(tds_var.universe, [0, 2, 4])
-    tds_var['menengah'] = fuzz.trimf(tds_var.universe, [3, 5, 7])
-    tds_var['besar'] = fuzz.trimf(tds_var.universe, [6, 8, 10])
+    tds_var['kecil'] = fuzz.trimf(tds_var.universe, [0, 40, 80])
+    tds_var['menengah'] = fuzz.trimf(tds_var.universe, [70, 100, 155])
+    tds_var['besar'] = fuzz.trimf(tds_var.universe, [150, 350, 700])
 
     # Nilai konsekuen dalam Sugeno (konstanta)
     nilai_kualitas_air = {
