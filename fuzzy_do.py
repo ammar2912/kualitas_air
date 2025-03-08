@@ -20,15 +20,15 @@ def interpretasi_sugeno(nilai):
 def hitung_sugeno(input_suhu, input_oksigen, input_ph, input_tds):
 
     # Variabel Input
-    suhu_var = ctrl.Antecedent(np.arange(0, 41, 1), 'suhu')
-    kadar_oksigen_var = ctrl.Antecedent(np.arange(0, 11, 1), 'kadar_oksigen')
-    ph_var = ctrl.Antecedent(np.arange(0, 15, 1), 'ph')
-    tds_var = ctrl.Antecedent(np.arange(0, 11, 1), 'tds')
+    suhu_var = ctrl.Antecedent(np.arange(0, 50, 1), 'suhu')
+    kadar_oksigen_var = ctrl.Antecedent(np.arange(0, 40, 1), 'kadar_oksigen')
+    ph_var = ctrl.Antecedent(np.arange(0, 14, 1), 'ph')
+    tds_var = ctrl.Antecedent(np.arange(0, 700, 1), 'tds')
 
     # Membership Functions untuk Input
     suhu_var['dingin'] = fuzz.trimf(suhu_var.universe, [0, 10, 20])
     suhu_var['normal'] = fuzz.trimf(suhu_var.universe, [15, 25, 35])
-    suhu_var['panas'] = fuzz.trimf(suhu_var.universe, [30, 40, 40])
+    suhu_var['panas'] = fuzz.trimf(suhu_var.universe, [30, 40, 50])
 
     kadar_oksigen_var['rendah'] = fuzz.trimf(kadar_oksigen_var.universe, [0, 2, 4])
     kadar_oksigen_var['sedang'] = fuzz.trimf(kadar_oksigen_var.universe, [3, 5, 7])
@@ -39,16 +39,16 @@ def hitung_sugeno(input_suhu, input_oksigen, input_ph, input_tds):
     ph_var['basa'] = fuzz.trimf(ph_var.universe, [7, 10, 14])
 
     tds_var['kecil'] = fuzz.trimf(tds_var.universe, [0, 40, 80])
-    tds_var['menengah'] = fuzz.trimf(tds_var.universe, [70, 100, 155])
+    tds_var['menengah'] = fuzz.trimf(tds_var.universe, [70, 120, 155])
     tds_var['besar'] = fuzz.trimf(tds_var.universe, [150, 350, 700])
 
     # Nilai konsekuen dalam Sugeno (konstanta)
     nilai_kualitas_air = {
-        'sangat buruk': 10, #1 3 mnt
-        'buruk': 30, #1 2 mnt
-        'cukup': 50, #1 1 mnt
-        'baik': 70, #1 30 dtik
-        'sangat baik': 90 #0
+        'sangat buruk': 10,
+        'buruk': 30,
+        'cukup': 50,
+        'baik': 70,
+        'sangat baik': 90
     }
 
     # Aturan Fuzzy dengan Nilai Sugeno
@@ -172,11 +172,15 @@ def hitung_sugeno(input_suhu, input_oksigen, input_ph, input_tds):
 
     return label, hasil
 
+    print(f"Firing Strength Suhu ({input_suhu}): {mu_suhu}")
+    print(f"Firing Strength DO ({input_oksigen}): {mu_oksigen}")
+    print(f"Firing Strength pH ({input_ph}): {mu_ph}")
+    print(f"Firing Strength TDS ({input_tds}): {mu_tds}")
 # # Contoh Input
-# input_suhu = 25
-# input_oksigen = 7
-# input_ph = 7
-# input_tds = 5
+#input_suhu = 25
+#input_oksigen = 7
+#input_ph = 7
+#input_tds = 5
 
 # # Hitung output Sugeno
 # kategori_kualitas = hitung_sugeno(input_suhu, input_oksigen, input_ph, input_tds)
